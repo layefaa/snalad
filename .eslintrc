@@ -9,7 +9,6 @@
   },
   "plugins": [
     "prettier",
-    "eslint-plugin-prettier",
-    "prettier-plugin-tailwindcss"
+    "eslint-plugin-prettier"
   ]
 }
