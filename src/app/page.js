@@ -1,7 +1,3 @@
-import Image from "next/image";
-
 export default function Home() {
-  return (
-    <main></main>
-  );
+  return <main className={'mr-6 bg-black '}></main>
 }
