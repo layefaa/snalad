@@ -14,6 +14,12 @@ module.exports = {
         'sl-primary-black': 'hsla(0, 0%, 0%, 1)',
         'sl-secondary-black': 'hsla(0, 0%, 31%, 1)',
       },
+      fontSize: {
+        12: '1.2rem',
+        14: '1.4rem',
+        24: '2.4rem',
+        36: '3.6rem',
+      },
     },
   },
   plugins: [],
