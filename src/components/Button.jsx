@@ -1,7 +1,14 @@
 'use client'
 import { useRouter } from 'next/navigation'
 
-const Button = ({ children, type = 'action', url, handleAction, classes }) => {
+const Button = ({
+  children,
+  type = 'action',
+  url,
+  handleAction,
+  classes,
+  disabled,
+}) => {
   const router = useRouter()
   const classNames = ` text-16 hover:scale-2  ${classes}`
   const handleNavigation = (url) => router.push(url)
@@ -9,13 +16,18 @@ const Button = ({ children, type = 'action', url, handleAction, classes }) => {
   switch (type) {
     case 'action':
       return (
-        <button onClick={handleAction} className={` ${classNames}`}>
+        <button
+          disabled={disabled}
+          onClick={handleAction}
+          className={` ${classNames}`}
+        >
           {children}
         </button>
       )
     case 'link':
       return (
         <button
+          disabled={disabled}
           onClick={() => handleNavigation(url)}
           className={` ${classNames}`}
         >

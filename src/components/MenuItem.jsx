@@ -1,13 +1,14 @@
-import Image from 'next/image'
+import Checkbox from '@/components/Checkbox'
 
 const MenuItem = ({ img, text, isChecked }) => {
   return (
-    <div className={'h-[26rem] w-[29rem] rounded-[1.5rem] bg-sl-primary-white'}>
+    <div className={' card h-[26rem] w-[29rem] cursor-pointer'}>
       <div className={'flex justify-between px-[1.5rem] py-[1.4rem]'}>
         <p className={'text-16 font-[600] text-sl-secondary-black'}>{text}</p>
+        <Checkbox selected={isChecked} />
       </div>
       <div className={'relative h-[22rem] w-full p-[0.5rem]'}>
-        <Image fill className={'h-full w-full'} src={img} alt={text} />
+        <img className={'h-[92%] w-full'} src={img} alt={text} />
       </div>
     </div>
   )
