@@ -34,3 +34,9 @@ body {
     @apply text-24;
   }
 }
+
+@layer components {
+  .container {
+    @apply px-[1.8rem]
+  }
+}

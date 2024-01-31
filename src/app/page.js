@@ -6,7 +6,7 @@ export default function Home() {
     <main
       className={'relative min-h-screen w-full bg-sl-primary-green text-white'}
     >
-      <section className={'flex w-full flex-col px-[1.5rem] pt-[10vh]'}>
+      <section className={'container flex w-full flex-col  pt-[10vh]'}>
         <div>
           <h2 className={'font-[900]'}>Willkommen bei</h2>
           <h1 className={'font-[900] underline underline-offset-8'}>
