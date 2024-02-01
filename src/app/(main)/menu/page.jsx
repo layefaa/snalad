@@ -27,6 +27,7 @@ export default function Menu() {
           {menues.map((menu) => {
             return (
               <MenuItem
+                type={'checkbox'}
                 img={menu.img}
                 text={menu.name}
                 key={menu.name}
