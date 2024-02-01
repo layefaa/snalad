@@ -1,4 +1,5 @@
-'use client'
+'use client' // If using Server Components
+
 import { useRouter } from 'next/navigation'
 
 const Button = ({
@@ -10,7 +11,8 @@ const Button = ({
   disabled,
 }) => {
   const router = useRouter()
-  const classNames = ` text-16 hover:scale-2  ${classes}`
+  const classNames = `text-16 hover:scale-2 ${classes}`
+
   const handleNavigation = (url) => router.push(url)
 
   switch (type) {
@@ -18,8 +20,11 @@ const Button = ({
       return (
         <button
           disabled={disabled}
-          onClick={handleAction}
-          className={` ${classNames}`}
+          onClick={() => {
+            console.log('working')
+            handleAction && handleAction()
+          }} // Check for handleAction
+          className={classNames}
         >
           {children}
         </button>
@@ -29,7 +34,7 @@ const Button = ({
         <button
           disabled={disabled}
           onClick={() => handleNavigation(url)}
-          className={` ${classNames}`}
+          className={classNames}
         >
           {children}
         </button>

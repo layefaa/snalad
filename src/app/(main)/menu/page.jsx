@@ -38,16 +38,17 @@ export default function Menu() {
         </div>
         <div className={'container mt-[5rem] flex justify-end'}>
           <Button
-            url={'/menu'}
+            url={'/menu/obst'}
             classes={
               'text-16 rounded-[1.5rem] px-[2.8rem] py-[1rem] font-[900] disabled:bg-sl-primary-white bg-sl-primary-green text-sl-primary-white disabled:text-sl-primary-green flex gap-x-[1.3rem] items-center'
             }
             type={'link'}
-            disabled={!selected}
+            // disabled={!selected}
+            disabled={false}
           >
             <p>Start</p>
             <svg
-              className={`${selected ? 'fill-sl-primary-white' : 'fill-sl-primary-green'}`}
+              className={`${true ? 'fill-sl-primary-white' : 'fill-sl-primary-green'}`}
               width="25"
               height="25"
               viewBox="0 0 25 25"

@@ -6,6 +6,10 @@ import 'swiper/css/navigation'
 import { useState } from 'react'
 import { Navigation, Pagination } from 'swiper/modules'
 import IngredientItem from '@/components/IngredientItem'
+import Button from '@/components/Button'
+import Overlay from '@/components/Overlay'
+import InputText from '@/components/InputText'
+import { useRouter } from 'next/navigation'
 
 const types = [
   {
@@ -86,13 +90,23 @@ const types = [
   },
 ]
 export default function Obst() {
-  const swiper = useSwiper()
-  const swiperSlide = useSwiperSlide()
+  const router = useRouter()
+  const [inputValue, setInputValue] = useState('')
+
+  const handleChange = (event) => {
+    setInputValue(event.target.value)
+  }
   const [selectedMenuItem, setSelectedMenuItem] = useState(1)
 
   const handleSlideChange = (index) => {
     console.log(index.activeIndex)
     setSelectedMenuItem(index.activeIndex)
+  }
+
+  const [showOverlay, setShowOverlay] = useState(false)
+
+  const handleShowOverlay = () => {
+    setShowOverlay(true)
   }
 
   return (
@@ -151,6 +165,38 @@ export default function Obst() {
             </ul>
           </div>
         )}
+      </div>
+      <div className={'my-[3.8rem] flex justify-center'}>
+        <Button
+          disabled={false}
+          handleAction={handleShowOverlay}
+          classes={
+            'text-16 rounded-[1.5rem] px-[10rem] py-[1.7rem] font-[900] bg-sl-primary-green text-sl-primary-white flex gap-x-[1.3rem] items-center'
+          }
+        >
+          Bestellen
+        </Button>
+      </div>
+      <div>
+        <Overlay show={showOverlay} onClose={() => setShowOverlay(false)}>
+          <InputText
+            inputValue={inputValue}
+            onChange={handleChange}
+            placeholder={'Ihre Vorname Bitte?'}
+            label={'Wie Heisen Sie?'}
+          />
+          <div className={'flex justify-center'}>
+            <Button
+              handleAction={() => router.push(`/order/${inputValue}`)}
+              disabled={false}
+              classes={
+                'text-16 mt-[5rem] rounded-[1.5rem] px-[7rem] py-[1.7rem] font-[900] bg-sl-primary-green text-sl-primary-white flex flex-row gap-x-[1.3rem] items-center'
+              }
+            >
+              <p>Bestellung Abschließen</p>
+            </Button>
+          </div>
+        </Overlay>
       </div>
     </section>
   )
