@@ -6,7 +6,7 @@ export default function Home() {
     <main
       className={'relative min-h-screen w-full bg-sl-primary-green text-white'}
     >
-      <section className={'container flex w-full flex-col  pt-[10vh]'}>
+      <section className={'container flex w-full flex-col  pt-[10%]'}>
         <div>
           <h2 className={'font-[900]'}>Willkommen bei</h2>
           <h1 className={'font-[900] underline underline-offset-8'}>
@@ -17,7 +17,7 @@ export default function Home() {
             Azubi U21 Project E-Center Hawig
           </p>
         </div>
-        <div className={'mt-[3rem]'}>
+        <div className={'container mt-[3rem]'}>
           <Image
             className={'aspect-[0.867] w-full'}
             src="/img/hero.png"
@@ -26,7 +26,7 @@ export default function Home() {
             alt="Picture of the author"
           />
         </div>
-        <div className={'mt-[3rem] flex justify-end'}>
+        <div className={'mt-[3vh] flex justify-end'}>
           <Button
             url={'/menu'}
             classes={

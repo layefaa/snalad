@@ -3,7 +3,7 @@ export default function Layout({ children }) {
     <>
       <header
         className={
-          'container fixed z-10 mb-[7rem] flex h-[7rem] w-full items-center bg-sl-primary-white'
+          'container fixed z-20 mb-[7rem] flex h-[7rem] w-full items-center bg-sl-primary-white'
         }
       >
         <p className={'text-20 font-[900] text-sl-secondary-black'}>Sna-lad</p>
