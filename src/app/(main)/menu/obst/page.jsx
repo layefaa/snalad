@@ -110,7 +110,7 @@ export default function Obst() {
   }
 
   return (
-    <section className={' min-h-screen w-full pb-[4rem]'}>
+    <section className={'h-full w-full pb-[4rem]'}>
       <div className={'gradient-bg flex w-full justify-center py-[4rem] '}>
         <Swiper
           className={'mr-[10rem] h-fit w-full'}

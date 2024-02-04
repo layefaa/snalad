@@ -46,9 +46,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${poppins.className} min-h-screen text-14`}>
-        {children}
-      </body>
+      <body className={`${poppins.className} text-14`}>{children}</body>
     </html>
   )
 }

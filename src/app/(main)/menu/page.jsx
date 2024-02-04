@@ -11,7 +11,7 @@ export default function Menu() {
     { name: 'Gemüse', img: '/img/gemuse.png' },
   ]
   return (
-    <section className={' h-full w-full py-[4rem]'}>
+    <section className={'relative min-h-dvh w-full pt-[2dvh]'}>
       <div className={'h-full w-full'}>
         <Image
           className={'h-full w-full'}
@@ -36,7 +36,7 @@ export default function Menu() {
             )
           })}
         </div>
-        <div className={'container mt-[5rem] flex justify-end'}>
+        <div className={'container mt-[5dvh] flex justify-end'}>
           <Button
             url={'/menu/obst'}
             classes={

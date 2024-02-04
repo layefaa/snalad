@@ -4,7 +4,7 @@ import Button from '@/components/Button'
 export default function Home() {
   return (
     <main
-      className={'relative min-h-screen w-full bg-sl-primary-green text-white'}
+      className={'relative min-h-dvh w-full bg-sl-primary-green text-white'}
     >
       <section className={'container flex w-full flex-col  pt-[10%]'}>
         <div>
@@ -26,7 +26,7 @@ export default function Home() {
             alt="Picture of the author"
           />
         </div>
-        <div className={'mt-[3vh] flex justify-end'}>
+        <div className={'mt-[3dvh] flex justify-end'}>
           <Button
             url={'/menu'}
             classes={
