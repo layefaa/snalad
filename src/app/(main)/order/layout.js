@@ -8,7 +8,7 @@ export default function Layout({ children }) {
     <>
       <header
         className={
-          'container fixed z-10 mb-[7rem] flex h-[7rem] w-full items-center bg-sl-primary-white'
+          'container fixed z-10 flex h-[5rem] w-full items-center bg-sl-primary-white'
         }
       >
         <div
@@ -32,9 +32,7 @@ export default function Layout({ children }) {
           </p>
         </div>
       </header>
-      <main className={' relative mt-[7rem] min-h-screen w-full bg-white'}>
-        {children}
-      </main>
+      <main className={' relative min-h-dvh w-full bg-white'}>{children}</main>
       <footer
         className={
           'fixed bottom-0 flex h-[4.5rem] w-full items-center justify-center bg-sl-primary-white text-12 text-sl-secondary-black'

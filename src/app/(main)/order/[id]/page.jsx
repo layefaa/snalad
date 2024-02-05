@@ -26,7 +26,7 @@ export default function Page({ params }) {
   return (
     <div
       className={
-        'flex h-[80vh] flex-col items-center justify-center gap-y-[3rem]'
+        'flex min-h-dvh flex-col items-center justify-center gap-y-[3rem]'
       }
     >
       {/* Use a switch statement to render the appropriate component */}

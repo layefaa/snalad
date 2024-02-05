@@ -110,7 +110,7 @@ export default function Obst() {
   }
 
   return (
-    <section className={'h-full w-full pb-[4rem]'}>
+    <section className={'relative h-full w-full'}>
       <div className={'gradient-bg flex w-full justify-center py-[4rem] '}>
         <Swiper
           className={'mr-[10rem] h-fit w-full'}
@@ -140,7 +140,7 @@ export default function Obst() {
         {/*<button className="swiper-button-next">Next</button>*/}
       </div>
 
-      <div className={'h-[60%] bg-sl-primary-white'}>
+      <div className={'h-full bg-sl-primary-white pb-[8rem]'}>
         {selectedMenuItem + 1 && (
           <div className="selected-ingredients">
             <div className={'container flex justify-between'}>
@@ -166,7 +166,9 @@ export default function Obst() {
           </div>
         )}
       </div>
-      <div className={'my-[3.8rem] flex justify-center'}>
+      <div
+        className={'fixed bottom-0 z-10 my-[3rem] flex w-dvw justify-center'}
+      >
         <Button
           disabled={false}
           handleAction={handleShowOverlay}
@@ -177,27 +179,25 @@ export default function Obst() {
           Bestellen
         </Button>
       </div>
-      <div>
-        <Overlay show={showOverlay} onClose={() => setShowOverlay(false)}>
-          <InputText
-            inputValue={inputValue}
-            onChange={handleChange}
-            placeholder={'Ihre Vorname Bitte?'}
-            label={'Wie Heisen Sie?'}
-          />
-          <div className={'flex justify-center'}>
-            <Button
-              handleAction={() => router.push(`/order/${inputValue}`)}
-              disabled={false}
-              classes={
-                'text-16 mt-[5rem] rounded-[1.5rem] px-[7rem] py-[1.7rem] font-[900] bg-sl-primary-green text-sl-primary-white flex flex-row gap-x-[1.3rem] items-center'
-              }
-            >
-              <p>Bestellung Abschließen</p>
-            </Button>
-          </div>
-        </Overlay>
-      </div>
+      <Overlay show={showOverlay} onClose={() => setShowOverlay(false)}>
+        <InputText
+          inputValue={inputValue}
+          onChange={handleChange}
+          placeholder={'Ihre Vorname Bitte?'}
+          label={'Wie Heisen Sie?'}
+        />
+        <div className={'flex justify-center'}>
+          <Button
+            handleAction={() => router.push(`/order/${inputValue}`)}
+            disabled={false}
+            classes={
+              'text-16 mt-[5rem] rounded-[1.5rem] px-[6rem] py-[1.7rem] font-[900] bg-sl-primary-green text-sl-primary-white flex flex-row gap-x-[1.3rem] items-center'
+            }
+          >
+            <p>Bestellung Abschließen</p>
+          </Button>
+        </div>
+      </Overlay>
     </section>
   )
 }

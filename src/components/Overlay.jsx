@@ -9,7 +9,7 @@ function Overlay({ children, show, onClose }) {
 
   return (
     <div
-      className={`fixed inset-0 z-50 h-screen overflow-y-auto bg-black bg-opacity-50 transition-opacity duration-300 ${
+      className={`fixed inset-0 z-50 min-h-dvh overflow-y-auto bg-black bg-opacity-50 transition-opacity duration-300 ${
         show ? 'block' : 'hidden'
       }`}
     >

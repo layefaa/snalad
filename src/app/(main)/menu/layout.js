@@ -11,7 +11,7 @@ export default function Layout({ children }) {
       <main className={' relative mt-[6rem] w-full bg-white'}>{children}</main>
       <footer
         className={
-          ' bottom-0 flex h-[4.5rem] w-full items-center justify-center bg-sl-primary-white text-12 text-sl-secondary-black'
+          ' relative bottom-0 flex h-[3rem] w-full items-center justify-center bg-sl-primary-white text-12 text-sl-secondary-black'
         }
       >
         <p className={''}>Copyright - Azubi-team, E Center Hawig</p>
