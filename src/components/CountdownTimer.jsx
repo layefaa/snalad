@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 function CountdownTimer({ actionOnComplete, initialTime = 300 }) {
   const [timeLeft, setTimeLeft] = useState(initialTime)
@@ -20,7 +20,6 @@ function CountdownTimer({ actionOnComplete, initialTime = 300 }) {
 
   const handleTimerCompletion = () => {
     // Execute your desired action here
-    console.log('Timer completed! Executing action:', actionOnComplete)
     // Call the user-provided action function
     actionOnComplete()
   }
