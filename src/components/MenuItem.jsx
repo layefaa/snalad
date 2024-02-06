@@ -1,8 +1,11 @@
 import Checkbox from '@/components/Checkbox'
 
-const MenuItem = ({ img, text, isChecked, type, stats }) => {
+const MenuItem = ({ img, text, isChecked, type, stats, handleAction }) => {
   return (
-    <div className={'card h-[26rem] w-[29rem] cursor-pointer'}>
+    <div
+      className={'card h-[26rem] w-[29rem] cursor-pointer'}
+      onClick={handleAction}
+    >
       <div className={'flex justify-between px-[1.5rem] py-[1.4rem]'}>
         <p className={'text-16 font-[600] capitalize text-sl-secondary-black'}>
           {text}

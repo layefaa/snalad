@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 export default function PageLayout({ children }) {
   const router = useRouter()
   return (
-    <section>
+    <>
       <header
         className={
           'container fixed z-10 flex h-[5rem] w-full items-center bg-sl-primary-white'
@@ -31,7 +31,9 @@ export default function PageLayout({ children }) {
           </p>
         </div>
       </header>
-      <main className={' relative min-h-dvh w-full bg-white'}>{children}</main>
+      <main className={' relative mt-[5rem]  min-h-dvh w-full bg-[#F8F8F8]'}>
+        {children}
+      </main>
       <footer
         className={
           'fixed bottom-0 flex h-[4.5rem] w-full items-center justify-center bg-sl-primary-white text-12 text-sl-secondary-black'
@@ -39,6 +41,6 @@ export default function PageLayout({ children }) {
       >
         <p className={''}>Copyright - Azubi-team, E Center Hawig</p>
       </footer>
-    </section>
+    </>
   )
 }

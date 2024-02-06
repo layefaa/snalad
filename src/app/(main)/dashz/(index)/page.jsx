@@ -1,11 +1,13 @@
 'use client'
 import Image from 'next/image'
 import MenuItem from '@/components/MenuItem'
+import { useRouter } from 'next/navigation'
 
 export default function Menu() {
+  const router = useRouter()
   const menues = [
-    { name: 'Obst', img: '/img/obst.png', stat: 4 },
-    { name: 'Gemüse', img: '/img/gemuse.png', stat: 5 },
+    { name: 'obst', img: '/img/obst.png', stat: 4 },
+    { name: 'gemuse', img: '/img/gemuse.png', stat: 5 },
   ]
   return (
     <section className={'relative min-h-dvh w-full'}>
@@ -26,10 +28,11 @@ export default function Menu() {
           {menues.map((menu) => {
             return (
               <MenuItem
+                handleAction={() => router.push(`/dashz/${menu.name}`)}
                 stats={menu.stat}
                 type={'stats'}
                 img={menu.img}
-                text={menu.name}
+                text={menu.name === 'gemuse' ? 'Gemüse' : menu.name}
                 key={menu.name}
               />
             )
