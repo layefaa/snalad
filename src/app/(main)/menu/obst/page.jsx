@@ -1,6 +1,6 @@
 'use client'
 import MenuItem from '@/components/MenuItem'
-import { Swiper, SwiperSlide, useSwiper, useSwiperSlide } from 'swiper/react'
+import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import { useState } from 'react'

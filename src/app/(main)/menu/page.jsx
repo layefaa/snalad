@@ -7,8 +7,8 @@ import Button from '@/components/Button'
 export default function Menu() {
   const [selected, setSelected] = useState(null)
   const menues = [
-    { name: 'Obst', img: '/img/obst.png' },
-    { name: 'Gemüse', img: '/img/gemuse.png' },
+    { name: 'obst', img: '/img/obst.png', id: 1 },
+    { name: 'gemuse', img: '/img/gemuse.png', id: 2 },
   ]
   return (
     <section className={'relative min-h-dvh w-full pt-[2dvh]'}>
@@ -27,28 +27,29 @@ export default function Menu() {
           {menues.map((menu) => {
             return (
               <MenuItem
+                handleAction={() => setSelected(menu)}
                 type={'checkbox'}
                 img={menu.img}
                 text={menu.name}
                 key={menu.name}
-                isChecked={true}
+                id={menu.id}
+                isChecked={selected?.id === menu.id}
               />
             )
           })}
         </div>
         <div className={'container mt-[5dvh] flex justify-end'}>
           <Button
-            url={'/menu/obst'}
+            url={`/menu/${selected?.name === 'gemuse' ? 'Gemüse' : selected?.name}`}
             classes={
               'text-16 rounded-[1.5rem] px-[2.8rem] py-[1rem] font-[900] disabled:bg-sl-primary-white bg-sl-primary-green text-sl-primary-white disabled:text-sl-primary-green flex gap-x-[1.3rem] items-center'
             }
             type={'link'}
-            // disabled={!selected}
-            disabled={false}
+            disabled={!selected}
           >
             <p>Start</p>
             <svg
-              className={`${true ? 'fill-sl-primary-white' : 'fill-sl-primary-green'}`}
+              className={`${selected ? 'fill-sl-primary-white' : 'fill-sl-primary-green'}`}
               width="25"
               height="25"
               viewBox="0 0 25 25"

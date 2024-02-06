@@ -2,15 +2,8 @@ import React from 'react'
 
 const Checkbox = ({ selected }) => {
   return (
-    <label className="flex items-center space-x-2">
-      <input
-        type="radio"
-        // value={option.id}
-        // onChange={(e) => {
-        //   handleChange(e.target.value)
-        // }}
-        className="hidden"
-      />
+    <div className="flex items-center space-x-2">
+      <input type="radio" className="hidden" />
       <div className={`flex cursor-pointer items-center justify-center`}>
         {selected ? (
           <svg
@@ -24,22 +17,22 @@ const Checkbox = ({ selected }) => {
               d="M23.2688 10.2369C22.7654 8.99544 22.0273 7.88383 21.0729 6.92939C20.1185 5.97494 19.0046 5.2369 17.7654 4.73349C16.5649 4.24601 15.2984 4 14 4C12.7016 4 11.4351 4.24601 10.2369 4.73121C8.99544 5.23462 7.88383 5.97267 6.92939 6.92711C5.97494 7.88155 5.23462 8.99544 4.73349 10.2346C4.24601 11.4351 4 12.7016 4 14C4 15.2984 4.24601 16.5649 4.73121 17.7631C5.23462 19.0046 5.97267 20.1162 6.92711 21.0706C7.88155 22.0251 8.99544 22.7631 10.2346 23.2665C11.4351 23.754 12.7016 24 14 24C15.2984 24 16.5649 23.754 17.7631 23.2688C19.0046 22.7654 20.1162 22.0273 21.0706 21.0729C22.0251 20.1185 22.7654 19.0046 23.2665 17.7654C23.754 16.5649 24 15.2984 24 14C24 12.7016 23.754 11.4351 23.2688 10.2369ZM12.6856 17.3189L9.64692 14.4715L10.2688 13.8064L12.6629 16.0501L17.7198 10.9932L18.3645 11.6378L12.6856 17.3189Z"
               fill="#97DAAA"
             />
-            <circle cx="14" cy="14" r="10" fill="white" fill-opacity="0.25" />
+            <circle cx="14" cy="14" r="10" fill="white" fillOpacity="0.25" />
             <circle
               cx="14"
               cy="14"
               r="12"
               stroke="#96DAA9"
-              stroke-opacity="0.25"
-              stroke-width="4"
+              strokeOpacity="0.25"
+              strokeWidth="4"
             />
           </svg>
         ) : (
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="22"
-            height="22"
-            viewBox="0 0 22 22"
+            width="28"
+            height="28"
+            viewBox="0 0 28 28"
             fill="none"
           >
             <path
@@ -49,7 +42,7 @@ const Checkbox = ({ selected }) => {
           </svg>
         )}
       </div>
-    </label>
+    </div>
   )
 }
 
