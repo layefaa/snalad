@@ -11,6 +11,7 @@
     "lint:fix": "prettier . --write"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.39.3",
     "next": "14.1.0",
     "react": "^18",
     "react-dom": "^18",
