@@ -1,0 +1,16 @@
+.swiper-pagination-bullet {
+    width: .6rem;
+    height: .6rem;
+    opacity: 1;
+    background: white;
+    @apply border-[#97DAAA] border
+}
+
+.swiper-pagination-bullet-active {
+    @apply bg-sl-primary-green w-[1.8rem] h-[.6rem]  rounded-[3.6rem]
+}
+
+
+.swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal {
+    @apply -bottom-[2%]
+}
