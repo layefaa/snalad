@@ -1,8 +1,17 @@
 import Checkbox from '@/components/Checkbox'
 
-const IngredientItem = ({ img, text, isChecked, type, pl, pp }) => {
+const IngredientItem = ({
+  img,
+  text,
+  isChecked,
+  type,
+  pl,
+  pp,
+  handleAction,
+}) => {
   return (
     <div
+      onClick={handleAction}
       className={
         'container relative flex w-full cursor-pointer items-center  bg-[#F8F8F8] py-[0.8rem]'
       }
@@ -18,8 +27,10 @@ const IngredientItem = ({ img, text, isChecked, type, pl, pp }) => {
         <p className={'text-14 font-[500] capitalize text-sl-secondary-black'}>
           {text}
         </p>
-        <p className={'text-14 font-[500] capitalize text-[#BFBFBF]'}>{pp}</p>
-        <p className={'text-12 text-sl-primary-green'}>{pl}</p>
+        <p className={'text-14 font-[500] capitalize text-[#BFBFBF]'}>
+          {pl} Lose Stück verbraucht
+        </p>
+        <p className={'text-12 text-sl-primary-green'}>{pp}% des Salats</p>
       </div>
       <div className={'absolute right-[5%]'}>
         {type === 'checkbox' ? <Checkbox selected={isChecked} /> : null}

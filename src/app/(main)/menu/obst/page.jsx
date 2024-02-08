@@ -1,99 +1,22 @@
 'use client'
-import MenuItem from '@/components/MenuItem'
-import { Swiper, SwiperSlide } from 'swiper/react'
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { supabase } from '@/lib/supabase'
 import 'swiper/css'
-// import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import '../../../pagination.css'
-import { useEffect, useState } from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination } from 'swiper/modules'
+import MenuItem from '@/components/MenuItem'
 import Button from '@/components/Button'
 import Overlay from '@/components/Overlay'
 import InputText from '@/components/InputText'
-import { useRouter } from 'next/navigation'
-import { supabase } from '@/lib/supabase'
+import IngredientItem from '@/components/IngredientItem'
 
-// const types = [
-//   {
-//     id: 0,
-//     name: 'type 1',
-//     img: '/img/obst.png',
-//     ingredients: [
-//       {
-//         name: 'Bananen Lose',
-//         pp: '2 Lose Stück verbraucht',
-//         pl: '55% des Salats',
-//         img: '/img/banana.png',
-//       },
-//       {
-//         name: 'Kiwi Lose',
-//         pp: '2 Lose Stück verbraucht',
-//         pl: '55% des Salats',
-//         img: '/img/kiwi.png',
-//       },
-//       {
-//         name: 'Granatapfel  Lose',
-//         pp: '1 Lose Stück verbraucht',
-//         pl: '10% des Salats',
-//         img: '/img/kiwi2.png',
-//       },
-//       {
-//         name: 'Orange  Lose',
-//         pp: '1 Lose Stück verbraucht',
-//         pl: '5% des Salats',
-//         img: '/img/kiwi.png',
-//       },
-//     ],
-//   },
-//   {
-//     id: 1,
-//     name: 'type 2',
-//     img: '/img/obst.png',
-//     ingredients: [
-//       {
-//         name: 'Granatapfel  Lose',
-//         pp: '1 Lose Stück verbraucht',
-//         pl: '10% des Salats',
-//         img: '/img/kiwi2.png',
-//       },
-//       {
-//         name: 'Bananen Lose',
-//         pp: '2 Lose Stück verbraucht',
-//         pl: '55% des Salats',
-//         img: '/img/banana.png',
-//       },
-//       {
-//         name: 'Orange  Lose',
-//         pp: '1 Lose Stück verbraucht',
-//         pl: '5% des Salats',
-//         img: '/img/kiwi.png',
-//       },
-//     ],
-//   },
-//   {
-//     id: 2,
-//     name: 'type 3',
-//     img: '/img/obst.png',
-//     ingredients: [
-//       {
-//         name: 'Granatapfel  Lose',
-//         pp: '1 Lose Stück verbraucht',
-//         pl: '10% des Salats',
-//         img: '/img/kiwi2.png',
-//       },
-//
-//       {
-//         name: 'Orange  Lose',
-//         pp: '1 Lose Stück verbraucht',
-//         pl: '5% des Salats',
-//         img: '/img/kiwi.png',
-//       },
-//     ],
-//   },
-// ]
 export default function Obst() {
   const router = useRouter()
 
+  // supabase
   const [menu, setMenu] = useState([])
 
   async function fetchMenu() {
@@ -104,15 +27,26 @@ export default function Obst() {
     if (error) {
       console.log(error)
     }
+
     return menu || []
   }
 
   useEffect(() => () => fetchMenu().then((res) => setMenu(res)), [])
+  // supabase
 
-  const [selectedMenuItem, setSelectedMenuItem] = useState(1)
+  const [selectedMenuItem, setSelectedMenuItem] = useState(0)
+  const [ingredients, selectIngredients] = useState([{ name: 'bananen' }])
   const handleSlideChange = (index) => {
-    console.log(index.activeIndex)
+    selectIngredients([])
     setSelectedMenuItem(index.activeIndex)
+  }
+  const checkIngredient = (item) => {
+    return !!ingredients.find((i) => i.name === item.name)
+  }
+  const toggleIngredient = (item) => {
+    !checkIngredient(item)
+      ? selectIngredients([...ingredients, { ...item }])
+      : selectIngredients(ingredients.filter((i) => i.name !== item.name))
   }
 
   // Overlay
@@ -166,8 +100,9 @@ export default function Obst() {
           onSlideChange={handleSlideChange}
         >
           <button className="swiper-button-prev"></button>
-          {menu.map((item) => (
+          {menu.map((item, index) => (
             <SwiperSlide
+              virtualIndex={item.id}
               style={{ display: 'flex', justifyContent: 'center' }}
               key={item.id}
             >
@@ -183,32 +118,29 @@ export default function Obst() {
         {/*<button className="swiper-button-next">Next</button>*/}
       </div>
 
-      {/*<div className={'h-full bg-sl-primary-white pb-[8rem]'}>*/}
-      {/*  {selectedMenuItem + 1 && (*/}
-      {/*    <div className="selected-ingredients">*/}
-      {/*      <div className={'container flex justify-between'}>*/}
-      {/*        <p className={'my-[1.3rem] text-14 font-[500]'}>Inhabit</p>*/}
-      {/*      </div>*/}
+      <div className={'h-full bg-sl-primary-white pb-[8rem]'}>
+        <div className="selected-ingredients">
+          <div className={'container flex justify-between'}>
+            <p className={'my-[1.3rem] text-14 font-[500]'}>Inhabit</p>
+          </div>
 
-      {/*      <ul className={'flex flex-col gap-y-[0.5rem]'}>*/}
-      {/*        {types[selectedMenuItem].ingredients.map(*/}
-      {/*          ({ name, img, pl, pp }) => (*/}
-      {/*            <li key={name}>*/}
-      {/*              <IngredientItem*/}
-      {/*                img={img}*/}
-      {/*                text={name}*/}
-      {/*                pl={pl}*/}
-      {/*                pp={pp}*/}
-      {/*                isChecked={true}*/}
-      {/*                type={'checkbox'}*/}
-      {/*              />*/}
-      {/*            </li>*/}
-      {/*          )*/}
-      {/*        )}*/}
-      {/*      </ul>*/}
-      {/*    </div>*/}
-      {/*  )}*/}
-      {/*</div>*/}
+          <ul className={'flex flex-col gap-y-[0.5rem]'}>
+            {menu[selectedMenuItem]?.ingredients.map((item) => (
+              <li key={item.name}>
+                <IngredientItem
+                  handleAction={() => toggleIngredient(item)}
+                  img={item.img_url}
+                  text={item.name}
+                  pl={item.lp}
+                  pp={item.percentage}
+                  isChecked={checkIngredient(item)}
+                  type={'checkbox'}
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
       <div
         className={'fixed bottom-0 z-10 my-[3rem] flex w-dvw justify-center'}
       >
@@ -219,7 +151,8 @@ export default function Obst() {
             'text-16 rounded-[1.5rem] px-[10rem] py-[1.7rem] font-[900] bg-sl-primary-green text-sl-primary-white flex gap-x-[1.3rem] items-center'
           }
         >
-          Bestellen
+          Bestellen {ingredients.length}/
+          {menu[selectedMenuItem]?.ingredients.length}
         </Button>
       </div>
       <Overlay show={showOverlay} onClose={() => setShowOverlay(false)}>
