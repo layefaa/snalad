@@ -13,7 +13,7 @@ import Overlay from '@/components/Overlay'
 import InputText from '@/components/InputText'
 import IngredientItem from '@/components/IngredientItem'
 
-export default function Obst() {
+export default function Obst({ params, searchParams }) {
   const router = useRouter()
 
   // supabase
