@@ -27,7 +27,7 @@ export default function Obst() {
     if (error) {
       console.log(error)
     }
-
+    console.log(menu)
     return menu || []
   }
 
