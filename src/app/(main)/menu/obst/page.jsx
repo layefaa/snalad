@@ -1,4 +1,6 @@
 'use client'
+export const dynamic = 'force-dynamic'
+
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
@@ -12,9 +14,8 @@ import Button from '@/components/Button'
 import Overlay from '@/components/Overlay'
 import InputText from '@/components/InputText'
 import IngredientItem from '@/components/IngredientItem'
-export const dynamic = 'force-dynamic'
 
-export default function Obst({ params, searchParams }) {
+export default function Obst() {
   const router = useRouter()
 
   // supabase
