@@ -1,17 +1,13 @@
 import { supabase } from '@/lib/supabase'
 
-export async function GET() {
-  let { data: menu, error } = await supabase
-    .from('menu')
-    .select('*')
-    .eq('type', 'obst')
-  if (error) {
-    console.log(error)
-  }
-  console.log(menu)
-  return menu || []
-}
-  const data = await res.json()
+export async function GET(request) {}
 
-  return Response.json({ data })
-}
+// let { data: menu, error } = await supabase
+//   .from('menu')
+//   .select('*')
+//   .eq('type', 'obst')
+// if (error) {
+//   console.log(error)
+// }
+// console.log(menu)
+// return menu || []

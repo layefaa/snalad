@@ -12,12 +12,25 @@ import Button from '@/components/Button'
 import Overlay from '@/components/Overlay'
 import InputText from '@/components/InputText'
 import IngredientItem from '@/components/IngredientItem'
+export const dynamic = 'force-dynamic'
 
 export default function Obst({ params, searchParams }) {
   const router = useRouter()
 
   // supabase
   const [menu, setMenu] = useState([])
+
+  async function fetchMenu() {
+    let { data: menu, error } = await supabase
+      .from('menu')
+      .select('*')
+      .eq('type', 'obst')
+    if (error) {
+      console.log(error)
+    }
+    console.log(menu)
+    return menu || []
+  }
 
   useEffect(() => () => fetchMenu().then((res) => setMenu(res)), [])
   // supabase
