@@ -33,7 +33,14 @@ export default function Page({ params }) {
     return menu || []
   }
 
-  useEffect(() => () => fetchMenu().then((res) => setMenu(res)), [])
+  useEffect(
+    () => () =>
+      fetchMenu().then((res) => {
+        console.log('use Effect')
+        setMenu(res)
+      }),
+    []
+  )
   // supabase
 
   const [selectedMenuItem, setSelectedMenuItem] = useState(0)
