@@ -33,13 +33,6 @@ export default function Layout({ children }) {
         </div>
       </header>
       <main className={' relative min-h-dvh w-full bg-white'}>{children}</main>
-      <footer
-        className={
-          'fixed bottom-0 flex h-[4.5rem] w-full items-center justify-center bg-sl-primary-white text-12 text-sl-secondary-black'
-        }
-      >
-        <p className={''}>Copyright - Azubi-team, E Center Hawig</p>
-      </footer>
     </>
   )
 }

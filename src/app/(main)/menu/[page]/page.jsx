@@ -44,7 +44,7 @@ export default function Page({ params }) {
   // supabase
 
   const [selectedMenuItem, setSelectedMenuItem] = useState(0)
-  const [ingredients, selectIngredients] = useState([{ name: 'bananen' }])
+  const [ingredients, selectIngredients] = useState([])
   const handleSlideChange = (index) => {
     selectIngredients([])
     setSelectedMenuItem(index.activeIndex)
