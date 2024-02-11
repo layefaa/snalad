@@ -15,7 +15,7 @@ import Overlay from '@/components/Overlay'
 import InputText from '@/components/InputText'
 import IngredientItem from '@/components/IngredientItem'
 
-export default function Obst() {
+export default function Page({ params }) {
   const router = useRouter()
 
   // supabase
@@ -25,7 +25,7 @@ export default function Obst() {
     let { data: menu, error } = await supabase
       .from('menu')
       .select('*')
-      .eq('type', 'obst')
+      .eq('type', params.page)
     if (error) {
       console.log(error)
     }
