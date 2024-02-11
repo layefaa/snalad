@@ -1,13 +1,15 @@
 'use client'
-import { useState } from 'react'
-import Tabs from '@/components/Tabs'
 import Products from '@/components/Products'
 import Orders from '@/components/Orders'
+import Tabs from '@/components/Tabs'
+import { useState } from 'react'
 
-export default function Obst() {
+export const dynamic = 'force-dynamic'
+
+export default function Page({ params }) {
   const menues = [
-    { name: 'Type 1', img: '/img/obst.png', orders: 4 },
-    { name: 'Type 2', img: '/img/gemuse.png', orders: 5 },
+    { name: 'Obst', img: '/img/obst.png', stat: 4, orders: 4 },
+    { name: 'Gemüse', img: '/img/gemuse.png', stat: 5, orders: 5 },
   ]
   const tabs = [
     { title: 'Produkten', content: <Products products={menues} /> },

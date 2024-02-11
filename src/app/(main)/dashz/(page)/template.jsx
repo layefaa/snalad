@@ -1,7 +1,7 @@
 'use client'
 import { usePathname } from 'next/navigation'
 
-export default function Template({ children }) {
+export default function Template({ children, params }) {
   const pathname = usePathname()
 
   function extractTrailingWord(text) {
@@ -9,7 +9,7 @@ export default function Template({ children }) {
     if (!trailingWord) {
       return text
     }
-    return trailingWord
+    return trailingWord === 'gemuse' ? 'gemüse' : trailingWord
   }
 
   return (

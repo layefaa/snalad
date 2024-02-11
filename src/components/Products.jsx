@@ -6,7 +6,7 @@ const Products = ({ products }) => {
       {products.map((p) => {
         return (
           <DashMenuItem
-            key={p.text}
+            key={p.name}
             img={p.img}
             type={'product'}
             text={p.name}
