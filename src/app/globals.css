@@ -52,4 +52,8 @@ body {
     }
 }
 
+.menu {
+    height: calc(100dvh - 45rem);
+}
+
 

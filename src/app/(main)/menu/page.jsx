@@ -11,7 +11,7 @@ export default function Menu() {
     { name: 'gemuse', img: '/img/gemuse.png', id: 2 },
   ]
   return (
-    <section className={'relative min-h-dvh w-full pt-[2dvh]'}>
+    <section className={'relative h-full min-h-dvh w-full pt-[2dvh]'}>
       <div className={'h-full w-full'}>
         <Image
           className={'h-full w-full'}
@@ -40,7 +40,7 @@ export default function Menu() {
         </div>
         <div className={'container mt-[5dvh] flex justify-end'}>
           <Button
-            url={`/menu/${selected?.name === 'gemuse' ? 'Gemüse' : selected?.name}`}
+            url={`/menu/${selected?.name}`}
             classes={
               'text-16 rounded-[1.5rem] px-[2.8rem] py-[1rem] font-[900] disabled:bg-sl-primary-white bg-sl-primary-green text-sl-primary-white disabled:text-sl-primary-green flex gap-x-[1.3rem] items-center'
             }
