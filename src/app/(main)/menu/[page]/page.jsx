@@ -14,9 +14,27 @@ import Button from '@/components/Button'
 import Overlay from '@/components/Overlay'
 import InputText from '@/components/InputText'
 import IngredientItem from '@/components/IngredientItem'
+import SelectInput from '@/components/SelectInput'
+
+const options = [
+  { value: 1, label: '1 person' },
+  { value: 2, label: '2 person' },
+  { value: 3, label: '3 person' },
+  { value: 4, label: '4 person' },
+]
 
 export default function Page({ params }) {
   const router = useRouter()
+
+  const [selectedOption, setSelectedOption] = useState({
+    value: 1,
+    label: '1 person',
+  })
+
+  const handleChangeSelect = (selected) => {
+    setSelectedOption(selected)
+  }
+
   const [isLoading, setLoading] = useState(false)
 
   // supabase
@@ -135,8 +153,13 @@ export default function Page({ params }) {
 
           <div className={'relative bottom-0 h-fit w-full pb-[12rem]'}>
             <div className="selected-ingredients">
-              <div className={'container flex justify-between'}>
+              <div className={'container flex items-center justify-between'}>
                 <p className={'my-[1.3rem] text-14 font-[500]'}>Inhabit</p>
+                <SelectInput
+                  options={options}
+                  onChange={handleChangeSelect}
+                  value={selectedOption}
+                />
               </div>
               <div className={'relative '}>
                 <ul
