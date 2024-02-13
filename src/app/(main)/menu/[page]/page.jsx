@@ -15,21 +15,20 @@ import Overlay from '@/components/Overlay'
 import InputText from '@/components/InputText'
 import IngredientItem from '@/components/IngredientItem'
 import SelectInput from '@/components/SelectInput'
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const options = [
-  { value: 1, label: '1 person' },
-  { value: 2, label: '2 person' },
-  { value: 3, label: '3 person' },
-  { value: 4, label: '4 person' },
+  { value: '1', label: '1 person' },
+  { value: '2', label: '2 person' },
+  { value: '3', label: '3 person' },
+  { value: '4', label: '4 person' },
 ]
 
 export default function Page({ params }) {
   const router = useRouter()
 
-  const [selectedOption, setSelectedOption] = useState({
-    value: 1,
-    label: '1 person',
-  })
+  const [selectedOption, setSelectedOption] = useState('2')
 
   const handleChangeSelect = (selected) => {
     setSelectedOption(selected)
@@ -43,13 +42,25 @@ export default function Page({ params }) {
   async function fetchMenu() {
     let { data: menu, error } = await supabase
       .from('menu')
-      .select('*')
+      .select('name ,type,ingredients, img_url, id')
       .eq('type', params.page)
     if (error) {
       console.log(error)
     }
     console.log(menu)
     return menu || []
+  }
+
+  async function newOrder(values) {
+    let { data, error } = await supabase
+      .from('orders')
+      .insert([values])
+      .select()
+
+    if (error) {
+      return error
+    }
+    return data
   }
 
   useEffect(() => {
@@ -79,9 +90,9 @@ export default function Page({ params }) {
   }
 
   // Overlay
-  const [inputValue, setInputValue] = useState('')
+  const [customer_name, setCustomer_name] = useState('')
   const handleChange = (event) => {
-    setInputValue(event.target.value)
+    setCustomer_name(event.target.value)
   }
   const [showOverlay, setShowOverlay] = useState(false)
   const handleShowOverlay = () => {
@@ -92,8 +103,39 @@ export default function Page({ params }) {
   const [swiper, setSwiper] = useState(null)
   // Swiperjs
 
+  // Update Supabase
+  async function addOrder() {
+    let { name, type, img_url } = menu[selectedMenuItem]
+    let data = {
+      customer_name: customer_name,
+      persons: selectedOption,
+      name,
+      type,
+      img_url,
+      ingredients: ingredients,
+    }
+    newOrder(data)
+      .then((res) => {
+        toast.success('Order was Successfully', {
+          position: 'top-right',
+          autoClose: 2000,
+        })
+        router.push(`/order/${res[0].id}`)
+      })
+      .catch((err) => {
+        console.log(err)
+        toast.error('Try Again, Something went wrong', {
+          position: 'top-right',
+          autoClose: 2000,
+        })
+      })
+  }
+
+  // Update Supabase
+
   return (
     <>
+      <ToastContainer />
       {!isLoading ? (
         <section className={'fixed h-full w-full'}>
           <div
@@ -205,14 +247,14 @@ export default function Page({ params }) {
 
           <Overlay show={showOverlay} onClose={() => setShowOverlay(false)}>
             <InputText
-              inputValue={inputValue}
+              inputValue={customer_name}
               onChange={handleChange}
               placeholder={'Ihre Vorname Bitte?'}
               label={'Wie Heisen Sie?'}
             />
             <div className={'flex justify-center'}>
               <Button
-                handleAction={() => router.push(`/order/${inputValue}`)}
+                handleAction={addOrder}
                 disabled={false}
                 classes={
                   'text-16 mt-[5rem] rounded-[1.5rem] px-[6rem] py-[1.7rem] font-[900] bg-sl-primary-green text-sl-primary-white flex flex-row gap-x-[1.3rem] items-center'
