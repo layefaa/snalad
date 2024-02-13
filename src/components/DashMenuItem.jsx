@@ -8,6 +8,7 @@ const DashMenuItem = ({
   customerName,
   completed,
   created_at,
+  handleAction,
 }) => {
   function isTimeMoreThan5MinutesAgo(time) {
     const givenTime = new Date(time)
@@ -28,7 +29,10 @@ const DashMenuItem = ({
   }
 
   return (
-    <div className={'card h-[22rem] w-[100%] max-w-[39rem] cursor-pointer'}>
+    <div
+      onClick={handleAction}
+      className={'card h-[22rem] w-[100%] max-w-[39rem] cursor-pointer'}
+    >
       <div
         className={
           'flex justify-between px-[1.5rem] py-[1rem] text-14 font-semibold'

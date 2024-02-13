@@ -12,15 +12,15 @@ const MenuItem = ({ img, text, isChecked, type, stats, handleAction }) => {
         </p>
         {type === 'checkbox' ? (
           <Checkbox selected={isChecked} />
-        ) : (
+        ) : stats >= 0 ? (
           <div
             className={
-              'grid aspect-square w-[2.6rem] place-content-center rounded-[1.5rem] bg-[#F8F8F8] text-12 font-black'
+              'grid aspect-square w-[2.6rem] place-content-center rounded-[1.5rem] bg-[#FF0000] text-12 font-black text-white'
             }
           >
             {stats}
           </div>
-        )}
+        ) : null}
       </div>
       <div className={'relative h-[22rem] w-full p-[0.5rem]'}>
         <img className={'h-[92%] w-full'} src={img} alt={text} />

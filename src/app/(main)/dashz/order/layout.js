@@ -1,8 +1,9 @@
 'use client'
 import { useRouter } from 'next/navigation'
 
-export default function PageLayout({ children }) {
+export default function Layout({ children }) {
   const router = useRouter()
+
   return (
     <>
       <header
@@ -28,7 +29,7 @@ export default function PageLayout({ children }) {
           </p>
         </div>
       </header>
-      <main className={' relative mt-[5rem]  min-h-dvh w-full bg-[#F8F8F8]'}>
+      <main className={' relative min-h-dvh w-full bg-white pt-[2rem]'}>
         {children}
       </main>
     </>

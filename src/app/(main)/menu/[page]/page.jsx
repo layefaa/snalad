@@ -229,12 +229,10 @@ export default function Page({ params }) {
                   }
                 >
                   <Button
-                    // ingredients.length < 2
-                    disabled={false}
+                    disabled={ingredients.length < 2}
                     handleAction={handleShowOverlay}
-                    // disabled:bg-sl-primary-white disabled:text-sl-primary-green
                     classes={
-                      'text-16 rounded-[1.5rem] px-[10rem] py-[1.7rem] font-[900] bg-sl-primary-green text-sl-primary-white  flex gap-x-[1.3rem] items-center'
+                      'text-16 disabled:bg-sl-secondary-black  disabled:text-sl-primary-white rounded-[1.5rem] px-[10rem] py-[1.7rem] font-[900] bg-sl-primary-green text-sl-primary-white  flex gap-x-[1.3rem] items-center'
                     }
                   >
                     Bestellen {ingredients.length}/
