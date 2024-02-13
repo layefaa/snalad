@@ -34,13 +34,6 @@ export default function PageLayout({ children }) {
       <main className={' relative mt-[5rem]  min-h-dvh w-full bg-[#F8F8F8]'}>
         {children}
       </main>
-      <footer
-        className={
-          'fixed bottom-0 flex h-[4.5rem] w-full items-center justify-center bg-sl-primary-white text-12 text-sl-secondary-black'
-        }
-      >
-        <p className={''}>Copyright - Azubi-team, E Center Hawig</p>
-      </footer>
     </>
   )
 }

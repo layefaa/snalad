@@ -7,10 +7,13 @@ const Products = ({ products }) => {
         return (
           <DashMenuItem
             key={p.text}
-            img={p.img}
+            img={p.img_url}
             type={'order'}
             text={p.name}
             orders={p.orders}
+            completed={p.completed}
+            customerName={p.customer_name}
+            created_at={p.created_at}
           />
         )
       })}

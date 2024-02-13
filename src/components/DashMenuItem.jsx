@@ -1,4 +1,32 @@
-const DashMenuItem = ({ img, text, type, orders, customerName, completed }) => {
+import CountdownTimer from '@/components/CountdownTimer'
+
+const DashMenuItem = ({
+  img,
+  text,
+  type,
+  orders,
+  customerName,
+  completed,
+  created_at,
+}) => {
+  function isTimeMoreThan5MinutesAgo(time) {
+    const givenTime = new Date(time)
+
+    // Check if givenTime is a valid Date object
+    if (isNaN(givenTime)) {
+      console.error('Invalid timestamp:', time)
+      return false
+    }
+
+    const currentTime = Date.now()
+
+    // Calculate the time difference in milliseconds
+    const timeDifference = currentTime - givenTime.getTime()
+
+    // Check if the time difference is greater than 5 minutes (300,000 milliseconds)
+    return timeDifference > 300000
+  }
+
   return (
     <div className={'card h-[22rem] w-[100%] max-w-[39rem] cursor-pointer'}>
       <div
@@ -25,7 +53,17 @@ const DashMenuItem = ({ img, text, type, orders, customerName, completed }) => {
           className={'container flex justify-between py-[1rem] font-semibold'}
         >
           <p>Für - {customerName}</p>
-          <p>{completed ? 'Completed' : ''}</p>
+          {completed ? (
+            <p className={'text-sl-primary-green'}>Completed</p>
+          ) : isTimeMoreThan5MinutesAgo(created_at) ? (
+            <p>Complete</p>
+          ) : (
+            <CountdownTimer
+              actionOnComplete={() => console.log('done')}
+              createdAt={created_at}
+              useDatabaseTime={true}
+            />
+          )}
         </div>
       ) : null}
     </div>

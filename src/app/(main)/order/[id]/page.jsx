@@ -29,7 +29,7 @@ export default function Page({ params }) {
   async function fetchOrder() {
     let { data: order, error } = await supabase
       .from('orders')
-      .select('customer_name, id, name')
+      .select('customer_name, id, name, created_at')
       .eq('id', params.id)
     if (error) {
       console.log(error)
@@ -47,7 +47,9 @@ export default function Page({ params }) {
         setOrder(res)
       })
       .catch((err) => console.log(err))
-      .finally(() => setLoading(false))
+      .finally(() => {
+        setLoading(false)
+      })
   }, [])
 
   async function completeOrder() {
@@ -83,9 +85,17 @@ export default function Page({ params }) {
           {activeComponent === '1' ? (
             <>
               <Box heading={'Success!'} sub={'Bestellung gesendet'}></Box>
-              <CountdownTimer
-                actionOnComplete={() => handleComponentChange('2')}
-              />
+              <div
+                className={
+                  'flex h-[9.3rem] w-[29.8rem] items-center justify-center rounded-[1.5rem] bg-[#F8F8F8] text-[2.9rem] font-[900]'
+                }
+              >
+                <CountdownTimer
+                  createdAt={order.created_at}
+                  useDatabaseTime={true}
+                  actionOnComplete={() => handleComponentChange('2')}
+                />
+              </div>
             </>
           ) : activeComponent === '2' ? (
             <>
