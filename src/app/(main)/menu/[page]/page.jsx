@@ -28,7 +28,7 @@ const options = [
 export default function Page({ params }) {
   const router = useRouter()
 
-  const [selectedOption, setSelectedOption] = useState('2')
+  const [selectedOption, setSelectedOption] = useState('1')
 
   const handleChangeSelect = (selected) => {
     setSelectedOption(selected)
@@ -104,7 +104,7 @@ export default function Page({ params }) {
   // Swiperjs
 
   // Update Supabase
-  async function addOrder() {
+  function addOrder() {
     let { name, type, img_url } = menu[selectedMenuItem]
     let data = {
       customer_name: customer_name,
@@ -255,9 +255,9 @@ export default function Page({ params }) {
             <div className={'flex justify-center'}>
               <Button
                 handleAction={addOrder}
-                disabled={false}
+                disabled={!customer_name}
                 classes={
-                  'text-16 mt-[5rem] rounded-[1.5rem] px-[6rem] py-[1.7rem] font-[900] bg-sl-primary-green text-sl-primary-white flex flex-row gap-x-[1.3rem] items-center'
+                  'text-16 mt-[5rem] rounded-[1.5rem] px-[6rem] py-[1.7rem] font-[900] bg-sl-primary-green disabled:opacity-50 text-sl-primary-white flex flex-row gap-x-[1.3rem] items-center'
                 }
               >
                 <p>Bestellung Abschließen</p>

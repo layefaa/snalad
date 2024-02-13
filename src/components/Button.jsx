@@ -21,7 +21,6 @@ const Button = ({
         <button
           disabled={disabled}
           onClick={() => {
-            console.log('working')
             handleAction && handleAction()
           }} // Check for handleAction
           className={classNames}

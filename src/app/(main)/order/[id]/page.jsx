@@ -3,6 +3,7 @@ import CountdownTimer from '@/components/CountdownTimer'
 import { useEffect, useState } from 'react'
 import Button from '@/components/Button'
 import { supabase } from '@/lib/supabase'
+
 function Box({ heading, sub }) {
   return (
     <div
@@ -49,6 +50,27 @@ export default function Page({ params }) {
       .finally(() => setLoading(false))
   }, [])
 
+  async function completeOrder() {
+    const { error } = await supabase
+      .from('orders')
+      .update({ completed: true })
+      .eq('id', order.id)
+
+    if (error) {
+      console.log(error)
+    }
+  }
+
+  function completeTheOrder() {
+    completeOrder()
+      .then(() => {
+        handleComponentChange('3')
+      })
+      .catch(() => {
+        console.log('error')
+      })
+  }
+
   return (
     <>
       {!isLoading ? (
@@ -78,7 +100,7 @@ export default function Page({ params }) {
                     'bg-sl-primary-green rounded-[1.5rem] rounded  font-[900] text-white py-[2.5rem] w-full text-[2.9rem]'
                   }
                   disabled={false}
-                  handleAction={() => handleComponentChange('3')}
+                  handleAction={completeTheOrder}
                 >
                   Abgeholt
                 </Button>
