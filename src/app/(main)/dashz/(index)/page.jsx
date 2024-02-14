@@ -66,18 +66,20 @@ export default function Menu() {
             text={menues[1].name === 'gemuse' ? 'Gemüse' : menues[1].name}
             key={menues[1].name}
           />
-          <Button
-            classes={
-              'absolute bottom-5 right-10 bg-sl-primary-green rounded-[1.5rem] rounded  font-[900] text-white p-[1rem] w-fit text-[1rem]'
-            }
-            disabled={false}
-            handleAction={() => {
-              fetchOrdersLength('obst').then((res) => setObst(res))
-              fetchOrdersLength('gemuse').then((res) => setGemuse(res))
-            }}
-          >
-            Refresh
-          </Button>
+          <div className={'absolute bottom-5  '}>
+            <Button
+              classes={
+                'bg-sl-primary-green rounded-[1.5rem] rounded  font-[900] text-white p-[1rem] w-fit text-[1rem]'
+              }
+              disabled={false}
+              handleAction={() => {
+                fetchOrdersLength('obst').then((res) => setObst(res))
+                fetchOrdersLength('gemuse').then((res) => setGemuse(res))
+              }}
+            >
+              Refresh
+            </Button>
+          </div>
         </div>
       </div>
     </section>

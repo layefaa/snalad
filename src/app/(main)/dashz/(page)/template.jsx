@@ -16,7 +16,7 @@ export default function Template({ children, params }) {
     <div className={''}>
       <div
         className={
-          'container flex h-[4rem] items-center bg-sl-primary-white text-16 font-bold capitalize'
+          'container flex h-[4rem] items-center bg-sl-primary-white pb-4 text-16 font-bold capitalize'
         }
       >
         <p>{extractTrailingWord(pathname)}</p>
