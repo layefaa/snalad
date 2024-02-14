@@ -99,7 +99,7 @@ export default function Page({ params }) {
             </>
           ) : activeComponent === '2' ? (
             <>
-              <Box heading={order.name} sub={'Type 1'}></Box>
+              <Box heading={order.customer_name} sub={'Type 1'}></Box>
               <div
                 className={
                   'w-[29.8rem] rounded-[1.5rem] bg-[#E2F5E7] p-[0.8rem]'

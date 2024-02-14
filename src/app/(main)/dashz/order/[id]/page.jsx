@@ -39,9 +39,7 @@ export default function Page({ params }) {
       {!isLoading ? (
         <section className={'fixed h-full w-full'}>
           <div
-            className={
-              'gradient-bg sticky top-0 flex  w-full justify-center py-[4rem] '
-            }
+            className={'gradient-bg  flex  w-full justify-center py-[4rem] '}
           >
             <MenuItem type={''} img={order.img_url} text={order.name} />
             {/*<button className="swiper-button-next">Next</button>*/}

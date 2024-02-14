@@ -13,6 +13,7 @@ module.exports = {
         'sl-secondary-white': 'hsla(0, 0%, 100%, 0.8)',
         'sl-primary-black': 'hsla(0, 0%, 0%, 1)',
         'sl-secondary-black': 'hsla(0, 0%, 31%, 1)',
+        'sl-secondary-black2': 'hsla(0, 0%, 10%, 0.8)',
       },
       fontSize: {
         12: '1.2rem',

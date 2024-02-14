@@ -10,11 +10,11 @@ const Tabs = ({ tabs, activeTab, onTabChange }) => {
 
   return (
     <div className="tabs-container">
-      <ul className="tabs-nav sticky top-10 mb-[2rem] flex bg-[#E2F5E7] py-[1.2rem] text-16">
+      <ul className="tabs-nav mb-[2rem] flex bg-sl-primary-white   text-16">
         {tabs.map((tab, index) => (
           <li
             key={index}
-            className={`tab-item w-1/2 text-center ${index === selectedTab ? 'font-bold text-[#97DAAA]' : ''}`}
+            className={`tab-item w-1/2 py-[1.2rem] text-center ${index === selectedTab ? 'bg-[#E2F5E7] font-bold text-[#97DAAA]' : ''}`}
             onClick={() => handleTabClick(index)}
           >
             {tab.title}

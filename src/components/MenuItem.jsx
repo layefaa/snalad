@@ -14,9 +14,8 @@ const MenuItem = ({ img, text, isChecked, type, stats, handleAction }) => {
           <Checkbox selected={isChecked} />
         ) : stats >= 0 ? (
           <div
-            className={
-              'grid aspect-square w-[2.6rem] place-content-center rounded-[1.5rem] bg-[#FF0000] text-12 font-black text-white'
-            }
+            className={`grid aspect-square w-[2.6rem] place-content-center rounded-[1.5rem]  text-12 font-black 
+               ${stats ? 'bg-[#FF0000] text-white ' : 'bg-[#f8f8f8]'}`}
           >
             {stats}
           </div>

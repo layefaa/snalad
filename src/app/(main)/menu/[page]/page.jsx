@@ -140,7 +140,7 @@ export default function Page({ params }) {
         <section className={'fixed h-full w-full'}>
           <div
             className={
-              'gradient-bg sticky top-0 flex  w-full justify-center py-[4rem] '
+              'gradient-bg relative flex  w-full justify-center py-[4rem] '
             }
           >
             <div
@@ -232,7 +232,7 @@ export default function Page({ params }) {
                     disabled={ingredients.length < 2}
                     handleAction={handleShowOverlay}
                     classes={
-                      'text-16 disabled:bg-sl-secondary-black  disabled:text-sl-primary-white rounded-[1.5rem] px-[10rem] py-[1.7rem] font-[900] bg-sl-primary-green text-sl-primary-white  flex gap-x-[1.3rem] items-center'
+                      'text-16 disabled:bg-sl-secondary-black2  disabled:text-sl-primary-white rounded-[1.5rem] px-[10rem] py-[1.7rem] font-[900] bg-sl-primary-green text-sl-primary-white  flex gap-x-[1.3rem] items-center'
                     }
                   >
                     Bestellen {ingredients.length}/
