@@ -28,7 +28,26 @@ const IngredientItem = ({
           {text}
         </p>
         <p className={'text-14 font-[500] capitalize text-[#BFBFBF]'}>
-          {pl} Lose Stück verbraucht
+          {pl}{' '}
+          {text === 'Trauben' ||
+          text === 'Rot Trauben' ||
+          text === 'Bluebeere' ||
+          text === 'Kulturheidelbeeren' ||
+          text === 'Erdbeeren' ||
+          text === 'Tafeltrauben hell und Dunkel' ||
+          text === 'Tafeltrauben' ||
+          text === 'Thunfisch' ||
+          text === 'Bonduelle Gemüsemais' ||
+          text === 'Kirchenerbsen' ||
+          text === 'G&G Bulgur Salat' ||
+          text === 'Oliven' ||
+          text === 'Brussels' ||
+          text === 'Macademia' ||
+          text === 'Goudawürfeln 48%' ||
+          text === 'Harry 1688 Brot' ||
+          text === 'Mais'
+            ? 'Paket verbraucht'
+            : 'Stück verbraucht'}
         </p>
         <p className={'text-12 text-sl-primary-green'}>{pp}% des Salats</p>
       </div>

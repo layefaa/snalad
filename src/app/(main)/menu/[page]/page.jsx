@@ -44,6 +44,7 @@ export default function Page({ params }) {
       .from('menu')
       .select('name ,type,ingredients, img_url, id')
       .eq('type', params.page)
+      .order('id', { ascending: true })
     if (error) {
       console.log(error)
     }
@@ -209,7 +210,7 @@ export default function Page({ params }) {
                     'menu flex flex-col gap-y-[0.5rem] overflow-y-auto pb-[15rem] '
                   }
                 >
-                  {menu[selectedMenuItem]?.ingredients.map((item) => (
+                  {menu[selectedMenuItem]?.ingredients?.map((item) => (
                     <li key={item.name}>
                       <IngredientItem
                         handleAction={() => toggleIngredient(item)}
@@ -236,7 +237,7 @@ export default function Page({ params }) {
                     }
                   >
                     Bestellen {ingredients.length}/
-                    {menu[selectedMenuItem]?.ingredients.length}
+                    {menu[selectedMenuItem]?.ingredients?.length}
                   </Button>
                 </div>
               </div>

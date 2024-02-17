@@ -20,7 +20,7 @@ export default function Home() {
         <div className={'container mt-[3rem]'}>
           <Image
             className={'aspect-[0.867] w-full'}
-            src="/img/hero.png"
+            src="/img/menu.png"
             width={500}
             height={500}
             alt="Picture of the author"
