@@ -19,6 +19,7 @@ export default function Page({ params }) {
       .from('menu')
       .select('*')
       .eq('type', params.page)
+      .order('id', { ascending: true })
     if (error) {
       console.log(error)
     }
